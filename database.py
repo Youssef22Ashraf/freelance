@@ -80,12 +80,12 @@ def match_user_id_with_note_id(note_id):
 
     command = "SELECT user FROM notes WHERE note_id = '" + note_id + "';" 
     _c.execute(command)
-    result = _c.fetchone()[0]
-
-    _conn.commit()
+    result = _c.fetchone()
     _conn.close()
-
-    return result
+    
+    if result is None:
+        return None
+    return result[0]
 
 def write_note_into_db(id, note_to_write):
     _conn = sqlite3.connect(note_db_file_location)
@@ -146,7 +146,7 @@ def delete_image_from_db(image_uid):
     _conn = sqlite3.connect(image_db_file_location)
     _c = _conn.cursor()
 
-    _c.execute("DELETE FROM images WHERE uid = ?;", (image_uid))
+    _c.execute("DELETE FROM images WHERE uid = ?;", (image_uid,))
 
     _conn.commit()
     _conn.close()
