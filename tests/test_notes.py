@@ -1,7 +1,7 @@
 import pytest
 from flask import session
 from app import app
-from database import add_user, read_note_from_db, list_users, delete_user_from_db
+from database import add_user, read_note_from_db, list_users, delete_user_from_db, write_note_into_db
 import hashlib
 
 @pytest.fixture
@@ -40,4 +40,22 @@ def test_create_note(client):
     
     # Verify note was saved in database
     notes = read_note_from_db('TESTUSER')
-    assert any(test_note in note for note in notes) 
+    assert any(test_note in note for note in notes)
+
+def test_delete_note(client):
+    """Test deleting a note"""
+    # First create a note
+    test_note = 'Note to be deleted'
+    write_note_into_db('TESTUSER', test_note)
+    
+    # Get the note_id of the created note
+    notes = read_note_from_db('TESTUSER')
+    note_id = next(note[0] for note in notes if test_note in note)
+    
+    # Delete the note
+    response = client.get(f'/delete_note/{note_id}', follow_redirects=True)
+    assert response.status_code == 200
+    
+    # Verify note was deleted from database
+    notes = read_note_from_db('TESTUSER')
+    assert not any(test_note in note for note in notes) 
