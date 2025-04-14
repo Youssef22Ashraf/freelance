@@ -42,9 +42,10 @@ def FUN_413(error):
 def FUN_root():
     return render_template("index.html")
 
-@app.route("/public/")
+@app.route("/public", strict_slashes=False)
 def FUN_public():
     return render_template("public_page.html")
+
 
 @app.route("/private/")
 def FUN_private():
@@ -144,13 +145,18 @@ def FUN_delete_image(image_uid):
 
 
 
-@app.route("/login", methods = ["POST"])
+@app.route("/login", methods=["POST"])
 def FUN_login():
-    id_submitted = request.form.get("id").upper()
-    if (id_submitted in list_users()) and verify(id_submitted, request.form.get("pw")):
-        session['current_user'] = id_submitted
+    id_submitted = request.form.get("id").upper()  # Ensure the ID is in uppercase
+    password = request.form.get("pw")  # Retrieve the password from the form
     
-    return(redirect(url_for("FUN_root")))
+    # Check if the user exists and the password is correct
+    if id_submitted in list_users() and verify(id_submitted, password):
+        session['current_user'] = id_submitted  # Store the current user in the session
+        return redirect(url_for("FUN_private"))  # Redirect to the private page after successful login
+    else:
+        return redirect(url_for("FUN_root"))  # Redirect to the home page if login fails
+
 
 @app.route("/logout/")
 def FUN_logout():

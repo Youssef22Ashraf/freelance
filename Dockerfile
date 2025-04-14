@@ -1,40 +1,23 @@
 # syntax=docker/dockerfile:1
-
-ARG PYTHON_VERSION=3.8
-FROM python:${PYTHON_VERSION}-slim as base
-
-# Prevents Python from writing pyc files.
-ENV PYTHONDONTWRITEBYTECODE=1
-
-# Keeps Python from buffering stdout and stderr
-ENV PYTHONUNBUFFERED=1
+FROM python:3.9-slim
 
 WORKDIR /app
 
-# Create a non-privileged user
-ARG UID=10002
-RUN adduser \
-    --disabled-password \
-    --gecos "" \
-    --home "/nonexistent" \
-    --shell "/sbin/nologin" \
-    --no-create-home \
-    --uid "${UID}" \
-    appuser
+# Install system dependencies only if needed
+# RUN apt-get update && apt-get install -y --no-install-recommends gcc python3-dev && rm -rf /var/lib/apt/lists/*
 
-# Ensure requirements.txt is present
-COPY requirements.txt ./
-# Install dependencies
-RUN python -m pip install --upgrade pip && pip install -r requirements.txt
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt gunicorn
 
-# Switch to the non-privileged user
-USER appuser
+# Copy application with non-root user
+COPY --chown=1000:1000 . .
+USER 1000
 
-# Copy the source code
-COPY . .
-
-# Expose the port that the application listens on.
 EXPOSE 5000
 
-# Run the application.
-CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:5000"]
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s \
+    CMD curl -f http://localhost:5000/health || exit 1
+
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "app:app"]
