@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app
+  namespace: staging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-app
+  template:
+    metadata:
+      labels:
+        app: flask-app
+    spec:
+      containers:
+        - name: flask-app-container
+          image: registry.internal.uia.no/ikt206-g-24v-devops-konte/exam-group-2/flask-example:staging
+          imagePullPolicy: Always
+            # registry.internal.uia.no/ikt206-g-24v-devops/examgroup24/flask-example:3933c4ac
+          env:
+            - name: DATABASE_URL
+              value: "postgresql://test:test123@postgresql-service.staging:5432/flaskDB"
+              #value: "postgresql://flaskUser:myserc%40pass@postgresql-service.staging:5432/flaskDB"
+          ports:
+            - containerPort: 5000
+      imagePullSecrets:
+        - name: my-docker-registry-secret
+

@@ -1,0 +1,40 @@
+# syntax=docker/dockerfile:1
+
+ARG PYTHON_VERSION=3.8
+FROM python:${PYTHON_VERSION}-slim as base
+
+# Prevents Python from writing pyc files.
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Keeps Python from buffering stdout and stderr
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+# Create a non-privileged user
+ARG UID=10002
+RUN adduser \
+    --disabled-password \
+    --gecos "" \
+    --home "/nonexistent" \
+    --shell "/sbin/nologin" \
+    --no-create-home \
+    --uid "${UID}" \
+    appuser
+
+# Ensure requirements.txt is present
+COPY requirements.txt ./
+# Install dependencies
+RUN python -m pip install --upgrade pip && pip install -r requirements.txt
+
+# Switch to the non-privileged user
+USER appuser
+
+# Copy the source code
+COPY . .
+
+# Expose the port that the application listens on.
+EXPOSE 5000
+
+# Run the application.
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:5000"]

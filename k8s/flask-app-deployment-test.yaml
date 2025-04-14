@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app
+  namespace: test
+spec: #specification of the deployment
+  replicas: 2
+  selector: #specifies how the deployment finds the pods it manages
+    matchLabels:
+      app: flask-app 
+  template: # pod template
+    metadata:
+      labels:
+        app: flask-app 
+    spec: # within templat
+      containers: 
+        - name: flask-app-container
+          image: registry.internal.uia.no/ikt206-g-24v-devops-konte/exam-group-2/flask-example:test 
+          imagePullPolicy: Always #ensuring the latest version is used
+          env: # specifies environment variables for the container
+            - name: DATABASE_URL
+              value: "sqlite:////var/lib/sqlite/your_sqlite.db"
+          ports: # specifies the ports that the container exposes
+            - containerPort: 5000
+      imagePullSecrets:
+        - name: my-docker-registry-secret 

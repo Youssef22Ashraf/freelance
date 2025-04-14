@@ -1,0 +1,31 @@
+stages:
+  - test
+  - build
+
+variables:
+  CONTAINER_REGISTRY: "registry.internal.uia.no"
+  CONTAINER_IMAGE: "${CONTAINER_REGISTRY}/ikt206-g-24v-devops-konte/exam-group-2/flask-example"
+
+pytest:
+  stage: test
+  image: python:3.9
+  script:
+    - pip install -r requirements.txt
+    - pip install coverage
+    - pytest
+    - coverage run -m pytest
+    - coverage report
+      
+build:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  script:
+    - mkdir -p /kaniko/.docker
+    # Create Docker auth file for authentication
+    - echo "{\"auths\":{\"${CONTAINER_REGISTRY}\":{\"username\":\"$REGISTRY_USERNAME\",\"password\":\"$REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+    # Use Kaniko to build and push the Docker image with the 'latest' tag only
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CONTAINER_IMAGE:test
+  only:
+    - master

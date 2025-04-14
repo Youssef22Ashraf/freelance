@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service #which is used to expose applications running on a set of pods as a network service
+metadata:
+  name: flask-app-service
+  namespace: test
+spec:
+  selector: # tells the Service how to find the Pods that it needs to manage or expose to the network
+    app: flask-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000
