@@ -19,28 +19,57 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
 # Virtual Environment
 venv/
 ENV/
+env/
+.env/
+bin/
+include/
+Scripts/
+pyvenv.cfg
 
 # IDE
 .idea/
 .vscode/
 *.swp
 *.swo
+.project
+.pydevproject
+.settings/
 
 # Database files
 *.db
+database_file/
 *.sqlite3
 
-# Image pool
+# Image uploads
 image_pool/
+uploads/
 
-# Test coverage
+# Testing
 .coverage
-htmlcov/
 .pytest_cache/
+htmlcov/
+.tox/
+nosetests.xml
+coverage.xml
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Logs and databases
+*.log
+*.sqlite
 
 # Docker
 .dockerignore
