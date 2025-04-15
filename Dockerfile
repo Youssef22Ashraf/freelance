@@ -1,23 +1,54 @@
 # syntax=docker/dockerfile:1
+
+# Build stage
+FROM python:3.9-slim as builder
+
+WORKDIR /app
+
+# Install build dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    postgresql-client \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements first to leverage Docker cache
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Final stage
 FROM python:3.9-slim
 
 WORKDIR /app
 
-# Install system dependencies only if needed
-# RUN apt-get update && apt-get install -y --no-install-recommends gcc python3-dev && rm -rf /var/lib/apt/lists/*
+# Install runtime dependencies
+RUN apt-get update && apt-get install -y \
+    postgresql-client \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt gunicorn
+# Copy only necessary files from builder
+COPY --from=builder /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
+COPY --from=builder /usr/local/bin/gunicorn /usr/local/bin/gunicorn
 
-# Copy application with non-root user
-COPY --chown=1000:1000 . .
-USER 1000
+# Copy application code
+COPY app.py .
+COPY database.py .
+COPY config.py .
+COPY templates/ templates/
+COPY static/ static/
+
+# Create uploads directory
+RUN mkdir -p uploads
+
+# Create non-root user
+RUN useradd -m appuser && chown -R appuser:appuser /app
+USER appuser
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1 \
+    FLASK_APP=app.py \
+    FLASK_ENV=production
+
+# Command to run the application
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
 
 EXPOSE 5000
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s \
-    CMD curl -f http://localhost:5000/health || exit 1
-
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "app:app"]

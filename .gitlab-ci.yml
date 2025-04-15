@@ -1,31 +1,56 @@
+image: docker:20.10.16
+
+services:
+  - docker:20.10.16-dind
+
+variables:
+  DOCKER_TLS_CERTDIR: "/certs"
+  CONTAINER_STAGING_IMAGE: $CI_REGISTRY_IMAGE:staging
+  CONTAINER_PRODUCTION_IMAGE: $CI_REGISTRY_IMAGE:production
+
 stages:
   - test
   - build
+  - deploy_staging
+  - deploy_production
 
-variables:
-  CONTAINER_REGISTRY: "registry.internal.uia.no"
-  CONTAINER_IMAGE: "${CONTAINER_REGISTRY}/ikt206-g-24v-devops-konte/exam-group-2/flask-example"
-
-pytest:
+test:
   stage: test
-  image: python:3.9
+  image: python:3.9-slim
   script:
     - pip install -r requirements.txt
-    - pip install coverage
-    - pytest
-    - coverage run -m pytest
-    - coverage report
-      
+    - python -m pytest
+
 build:
   stage: build
-  image:
-    name: gcr.io/kaniko-project/executor:debug
-    entrypoint: [""]
   script:
-    - mkdir -p /kaniko/.docker
-    # Create Docker auth file for authentication
-    - echo "{\"auths\":{\"${CONTAINER_REGISTRY}\":{\"username\":\"$REGISTRY_USERNAME\",\"password\":\"$REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
-    # Use Kaniko to build and push the Docker image with the 'latest' tag only
-    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CONTAINER_IMAGE:test
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $CONTAINER_STAGING_IMAGE .
+    - docker push $CONTAINER_STAGING_IMAGE
+
+deploy_staging:
+  stage: deploy_staging
+  environment:
+    name: staging
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker pull $CONTAINER_STAGING_IMAGE
+    - docker-compose -f docker-compose.yml down
+    - docker-compose -f docker-compose.yml up -d
   only:
-    - master
+    - main
+
+deploy_production:
+  stage: deploy_production
+  environment:
+    name: production
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker pull $CONTAINER_STAGING_IMAGE
+    - docker tag $CONTAINER_STAGING_IMAGE $CONTAINER_PRODUCTION_IMAGE
+    - docker push $CONTAINER_PRODUCTION_IMAGE
+    - docker-compose -f docker-compose.prod.yml down
+    - docker-compose -f docker-compose.prod.yml up -d
+  when: manual
+  only:
+    - main
