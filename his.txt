@@ -1,0 +1,935 @@
+    1  sudo apt update && sudo apt upgrade -y
+    2  ls
+    3  cd ..
+    4  ls
+    5  cd ..
+    6  ls
+    7  cd ..
+    8  ls
+    9  cd ..
+   10  ls
+   11  cd home
+   12  ls
+   13  cd youss
+   14  ls
+   15  cd /mnt/c
+   16  ls
+   17  cd /mnt/c/Users/YOUR_USERNAME/Desktop
+   18  cd /mnt/c/Users/youss/Desktop
+   19  ls
+   20  cd "/mnt/c/Users/youss/OneDrive - Nile University/Desktop"
+   21  ls
+   22  cd "DEPI Tech"
+   23  LS
+   24  ls
+   25  cd k8s
+   26  ls
+   27  cd k8s_depi_program
+   28  ls
+   29  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+   30  sudo install minikube-linux-amd64 /usr/local/bin/minikube
+   31  minikube start
+   32  rm minikube-linux-amd64
+   33  minikube start
+   34  docker version
+   35  sudo apt install docker.io -y
+   36  sudo usermod -aG docker youss
+   37  docker ps
+   38  sudo docker ps
+   39  which docker
+   40  docker version
+   41  sudo docker version
+   42  groups
+   43  exit
+   44  cd /mnt/c/Users/youss/OneDrive - Nile University/Desktop/DEPI Tech/k8s/k8s_depi_program
+   45  cd "/mnt/c/Users/youss/OneDrive - Nile University/Desktop/DEPI Tech/k8s/k8s_depi_program"
+   46  docker version
+   47  docker ps
+   48  minikube start
+   49  docker ps
+   50  kubectl get pods
+   51  kubectx get pods
+   52  kubectl get pods
+   53  minikube status
+   54  minikube kubectl -- get nodes
+   55  minikube kubectl -- create deployment test-nginx --image=nginx
+   56  kubectl -- create deployment twest-nginx --image=nginx
+   57  minikube kubectl -- get pods
+   58  minikube kubectl -- expose deployment test-nginx --type=NodePort --port=80
+   59  minikube kubectl -- get services
+   60  minikube ip
+   61  curl http://192.168.49.2:10.96.215.96
+   62  curl http://192.168.49.2:32565
+   63  minikube service test-nginx --url
+   64  cd "/mnt/c/Users/youss/OneDrive - Nile University/Desktop/DEPI Tech/k8s/k8s_depi_program"
+   65  ls
+   66  minikube kubectl get pods
+   67  minikube start
+   68  kubectl get pods
+   69  minikube start
+   70  sudo apt install -y openssh-server openssh-client
+   71  sudo systemctl status ssh
+   72  openssh status
+   73  ssh -V
+   74  sudo apt install -y ansible
+   75  ansible --version
+   76  .code
+   77  . code
+   78  printenv > "/tmp/tmp-23175tqpZjaOWrkKH.txt"
+   79  cp -r /mnt/c/Users/youss/OneDrive\ -\ Nile\ University/Desktop/DEPI\ Tech/k8s/k8s_depi_program ~/k8s_depi_program
+   80  cd ~/k8s_depi_program
+   81  ls
+   82  cd ..
+   83  ls
+   84  cd ..
+   85  ls
+   86  cd youss
+   87  ls
+   88  git branches
+   89  git branch
+   90  ls
+   91  cd k8s_depi_program
+   92  ls
+   93  cd lab4
+   94  ls
+   95  nano darkblue-config.yaml
+   96  ls
+   97  cat darkblue-config.yaml
+   98  kubectl apply -f configmap.yaml
+   99  sudo snap install kubectl
+  100  minikube kubectl apply -f configmap.yaml
+  101  minikube kubectl --  apply -f configmap.yaml
+  102  minikube kubectl --  apply -f darblue-config.yaml
+  103  ls
+  104  minikube kubectl --  apply -f darkblue-config.yaml
+  105  cd "/mnt/c/Users/youss/OneDrive\ -\ Nile\ University/Desktop/DEPI\ Tech/k8s/k8s_depi_program"
+  106  cd "/mnt/c/Users/youss/OneDrive - Nile University/Desktop/DEPI Tech/k8s/k8s_depi_program$"
+  107  cd "/mnt/c/Users/youss/OneDrive - Nile University/Desktop/DEPI Tech/k8s/k8s_depi_program"
+  108  minikube kubectl --  apply -f darkblue-config.yaml
+  109  ls
+  110  cd lab4
+  111  ls
+  112  minikube kubectl --  apply -f darkblue-config.yaml
+  113  minikube kubectl get pods
+  114  docker ps
+  115  minikube start
+  116  docker ps
+  117  minikube kubectl --  apply -f darkblue-config.yaml
+  118  minikube kubectl -- get configmaps
+  119  minikube kubectl -- get configmap webapp-config-map -o yaml
+  120  ls
+  121  minikube kubectl -- apply -f webapp-color-pod.yaml
+  122  minikube kubectl -- get configmap webapp-color -o yaml
+  123  minikube kubectl -- get configmap webapp-color-pod -o yaml
+  124  minikube kubectl -- get configmap 
+  125  minikube kubectl -- get pod
+  126  minikube kubectl -- get secrets
+  127  minikube kubectl -- get secrets -A
+  128  minikube kubectl -- expose pod webapp-color --type=NodePort --port=80 --name=webapp-service
+  129  minikube kubectl -- get secrets -n default
+  130  minikube kubectl -- run db-pod --image=mysql:5.7 --restart=Never
+  131  minikube kubectl -- get pods
+  132  minikube kubectl -- describe db-pod
+  133  minikube kubectl -- describe pod db-pod
+  134  minikube kubectl -- get pods
+  135  minikube kubectl -- describe pod db-pod
+  136  minikube kubectl -- logs db-pod
+  137  minikube kubectl -- get pods
+  138  minikube kubectl -- delete pod db-pod
+  139  minikube kubectl -- get pods
+  140  minikube kubectl -- apply -f db-secret.yaml
+  141  minikube kubectl -- get secrets
+  142  minikube kubectl -- apply -f db-pod.yaml
+  143  minikube kubectl -- get pods
+  144  minikube kubectl -- apply -f multi-container-yellow.yaml
+  145  minikube kubectl -- apply -f init-container-red.yaml
+  146  minikube kubectl -- get pods
+  147  minikube kubectl -- logs red -c init-busybox
+  148  minikube kubectl -- logs yellow -c redis-container
+  149  minikube kubectl -- logs red -c redis-container
+  150  minikube kubectl -- get pods
+  151  minikube kubectl -- get pod yellow -o jsonpath='{.spec.containers[*].name}'
+  152  minikube kubectl --  logs yellow -c lemon
+  153  minikube kubectl --  logs yellow -c gold
+  154  minikube kubectl -- apply -f print-envars-greeting.yaml
+  155  minikube kubectl -- get pods
+  156  minikube kubectl -- logs print-envars-greeting
+  157  minikube kubectl -- get pods
+  158  minikube kubectl -- logs print-envars-greeting
+  159  ~/.kube/config
+  160  cat ~/.kube/config
+  161  echo $KUBECONFIG
+  162  cat ~/.kube/config | grep $KUBECONFIG
+  163  cat ~/.kube/config | grep KUBECONFIG
+  164  cat ~/.kube/config | grep KUBE
+  165  cd ~/.kube/config
+  166  cd "~/.kube/config"
+  167  cd ~
+  168  ls
+  169  cd .kube/config
+  170  cd "/mnt/c/Users/youss/OneDrive - Nile University/Desktop/DEPI Tech/k8s/k8s_depi_program/lab4"
+  171  ls /mnt/c/users/youss
+  172  ls /mnt/c/users/youss/.kube
+  173  cd /mnt/c/users/youss/.kube
+  174  ls
+  175  cd cache
+  176  ls
+  177  cd http
+  178  ls
+  179  cd..
+  180  cd ..
+  181  cd config
+  182  cd /config
+  183  cd "/mnt/c/Users/youss/OneDrive - Nile University/Desktop/DEPI Tech/k8s/k8s_depi_program/lab4"
+  184  cat ~/.kube/config
+  185  kubectl config view -o jsonpath='{.clusters[*].name}'
+  186  minikubekubectl -- config view -o jsonpath='{.clusters[*].name}'
+  187  minikube kubectl -- config view -o jsonpath='{.clusters[*].name}'
+  188  minikube kubectl -- config view -o jsonpath='{.clusters[*].name}'| wc -w
+  189  kubectl config view
+  190  minikube kubectl -- config view
+  191  kubectl config view -o jsonpath='{.contexts[?(@.name=="'$(kubectl config current-context)'")].context.user}'
+  192  minikube kubectl -- config view -o jsonpath='{.contexts[?(@.name=="'$(kubectl config current-context)'")].context.user}'
+  193  minikube kubectl -- config view
+  194  minikube kubectl -- config view -o jsonpath='{.contexts[?(@.name=="'$(kubectl config current-context)'")].context.user}'
+  195  minikube kubectl -- apply -f volume.yaml
+  196  minikube kubectl -- apply -f pvc-log.yaml
+  197  minikube kubectl -- apply -f webapp-pod.yaml
+  198  minikube kubectl -- get pods
+  199  minikube kubectl -- get pv
+  200  minikube kubectl -- get pvc
+  201  cd ..
+  202  git init
+  203  git branch
+  204  git add lab4
+  205  git commit -m "adding lab4 files and explanation document steps"
+  206  git config --global user.name youssef22ashraf
+  207  git commit -m "adding lab4 files and explanation document steps"
+  208  git push origin main
+  209  git config --global user.name Youssef22Ashraf
+  210  git log
+  211  git reset --soft HEAD~1
+  212  git revert 45409b8d35ccf47b7a3325f16a929c07b82ec682
+  213  git push origin main
+  214  git pull
+  215  git push origin main
+  216  git add .
+  217  git commit -m "update the repo for preparing lab5"
+  218  git push origin main
+  219  cd "/mnt/c/Users/youss/OneDrive - Nile University/Desktop/DEPI Tech/k8s/k8s_depi_program"
+  220  code .
+  221  exit
+  222  ls
+  223  cd k8s_depi_program
+  224  ls
+  225  exit
+  226  code .
+  227  docker ps
+  228  docker images
+  229  kubectl get pods
+  230  minikube kubectl -- get pods
+  231  printenv > "/tmp/tmp-109446wUzODUexBmGE.txt"
+  232  ls
+  233  docker ps
+  234  docker images
+  235  sudo install jenkins
+  236  exit
+  237  printenv > "/tmp/tmp-929zhlAdwqbcsnc.txt"
+  238  ls
+  239  code .
+  240  docker ps
+  241  minikube start
+  242  docker ps
+  243  minikube kubectl -- get pods
+  244  minikube kubectl -- delete pod print-envars-greeting
+  245  minikube kubectl -- get pods
+  246  code .
+  247  minikube start
+  248  ls
+  249  cd ..
+  250  ls
+  251  cd ..
+  252  ls
+  253  cd mnt
+  254  ls
+  255  cd c
+  256  ls
+  257  cd "C:\Users\youss\OneDrive - Nile University\Desktop\DEPI TECH\k8s\k8s_depi_program"
+  258  cd "c\Users\youss\OneDrive - Nile University\Desktop\DEPI TECH\k8s\k8s_depi_program"
+  259  cd users
+  260  ls
+  261  cd youss
+  262  ls
+  263  cd OneDrive - Nile University
+  264  cd "OneDrive - Nile University"
+  265  ls
+  266  cd ..
+  267  ls
+  268  cd Desktop
+  269  ls
+  270  cd ..
+  271  cd C:\Users\youss\OneDrive - Nile University\Desktop\DEPI TECH\k8s
+  272  cd "C:\Users\youss\OneDrive - Nile University\Desktop\DEPI TECH\k8s"
+  273  cd ..
+  274  cd "C:\Users\youss\OneDrive - Nile University\Desktop\DEPI TECH\k8s"
+  275  cd ..
+  276  cd "C:\Users\youss\OneDrive - Nile University\Desktop\DEPI TECH\k8s"
+  277  cd "C\Users\youss\OneDrive - Nile University\Desktop\DEPI TECH\k8s"
+  278  cd "c\Users\youss\OneDrive - Nile University\Desktop\DEPI TECH\k8s"
+  279  cd -
+  280  cd users
+  281  cd "\OneDrive - Nile University\Desktop\DEPI TECH\k8s"
+  282  cd "OneDrive - Nile University"
+  283  cd ..
+  284  cd Users
+  285  ls
+  286  cd youss
+  287  ls
+  288  cd "OneDrive - Nile University"
+  289  ls
+  290  cd "Desktop"
+  291  ls
+  292  cd "C:\Users\youss\OneDrive - Nile University\Desktop\DEPI TECH\k8s"
+  293  history
+  294  cd "/mnt/c/Users/youss/OneDrive\ -\ Nile\ University/Desktop/DEPI\ Tech/k8s/k8s_depi_program"
+  295  cd ..
+  296  ls
+  297  cd ..
+  298  ls
+  299  cd wsl
+  300  ls
+  301  cd ..
+  302  ls
+  303  cd "/mnt/c/Users/youss/OneDrive\ -\ Nile\ University/Desktop/DEPI\ Tech/k8s/k8s_depi_program"
+  304  cd  "/mnt/c/Users/youss/OneDrive - Nile University/Desktop/DEPI Tech/k8s/k8s_depi_program"
+  305  ls
+  306  code .
+  307  minikube kubectl -- create ns --name  haproxy-controller-devops
+  308  minikube kubectl -- create ns --name haproxy-controller-devops
+  309  minikube kubectl -- create namespace --name haproxy-controller-devops
+  310  minikube kubectl -- create namespace  haproxy-controller-devops
+  311  minikube start
+  312  minikube kubectl -- create namespace  haproxy-controller-devops
+  313  minikube kubectl -- get ns
+  314  minikube kubectl -- create serviceaccount haproxy-service-account-devops -n haproxy-controller-devops
+  315  minikube kubectl -- get serviceaccounts
+  316  minikube kubectl -- get serviceaccount
+  317  minikube kubectl -- get serviceaccount -n  haproxy-controller-devops
+  318  git clone https://github.com/CubiCasa/CubiCasa5k.git
+  319  cd "arch model"
+  320  ls
+  321  cd ..
+  322  cd CubiCasa5k
+  323  ls
+  324  docker build -t model .
+  325  docker images
+  326  docker ps
+  327  minikube kubectl -- apply -f ClusterRole.yaml
+  328  cd lab5
+  329  minikube kubectl -- apply -f ClusterRole.yaml
+  330  minikube kubectl -- get ns
+  331  minikube kubectl -- apply -f ClusterRole-rolebinding.yaml
+  332  minikube kubectl -- get pods
+  333  minikube kubectl -- get deployment
+  334  minikube kubectl -- get cr
+  335  ClusterRole
+  336  minikube kubectl -- get ClusterRole
+  337  minikube kubectl -- get ClusterRole --namespace default
+  338  minikube kubectl -- get ClusterRole --namespace haproxy-controller-devops
+  339  minikube kubectl -- get ns haproxy-controller-devops -o
+  340  minikube kubectl -- get ns haproxy-controller-devops 
+  341  minikube kubectl -- get all --namespace haproxy-controller-devops 
+  342  minikube kubectl -- apply -f ClusterRole.yaml --namespace haproxy-controller-devops
+  343  minikube kubectl -- get all --namespace haproxy-controller-devops 
+  344  minikube kubectl -- apply -f ClusterRole.yaml ns haproxy-controller-devops
+  345  minikube kubectl -- apply -f ClusterRole.yaml --ns haproxy-controller-devops
+  346  minikube kubectl -- get all 
+  347  minikube kubectl -- get all --namespace 
+  348  minikube kubectl -- apply -f ClusterRole-rolebinding.yaml
+  349  minikube kubectl -- get all --namespace haproxy-controller-devops 
+  350  minikube kubectl -- apply -f Backend-deployment.yaml
+  351  minikube kubectl -- apply -f backend-service.yaml
+  352  minikube kubectl -- get ns
+  353  minikube kubectl -- apply -f backend-service.yaml
+  354  minikube kubectl -- apply -f backend-deployment.yaml
+  355  minikube kubectl -- apply -f frontend-deployment.yaml
+  356  minikube kubectl -- get deployment
+  357  minikube kubectl -- get deployment --namespace haproxy-controller-devops
+  358  minikube kubectl -- apply -f frontend-service.yaml
+  359  minikube kubectl -- get deployment --namespace haproxy-controller-devops
+  360  minikube kubectl -- get service --namespace haproxy-controller-devops
+  361  minikube kubectl -- get all --namespace haproxy-controller-devops
+  362  minikube ip
+  363  curl -v http://192.168.49.2:32456
+  364  curl -v http://192.168.49.2:32678  # To check HAProxy stats
+  365  kubectl logs -n haproxy-controller-devops deployment/haproxy-ingress-devops
+  366  minikube kubectl -- logs -n haproxy-controller-devops deployment/haproxy-ingress-devops
+  367  minikube kubectl -- get svc -n haproxy-controller-devops
+  368  ip route | grep default
+  369  curl -v  http://172.30.192.1:32456
+  370  cd lab5
+  371  kubectl port-forward -n haproxy-controller-devops service/ingress-service-devops 8080:80
+  372  minikube kubectl -- port-forward -n haproxy-controller-devops service/ingress-service-devops 8080:80
+  373  cd lab5
+  374  kubectl get pods -n haproxy-controller-devops
+  375  minikube kubectl --  get pods -n haproxy-controller-devops
+  376  minikube kubectl logs -n haproxy-controller-devops -l run=haproxy-ingress
+  377  minikube kubectl -- logs -n haproxy-controller-devops -l run=haproxy-ingress
+  378  minikube kubectl -- get endpoints -n haproxy-controller-devops
+  379  minikube kubectl -- port-forward -n haproxy-controller-devops service/service-backend-devops 8081:8080
+  380  minikube kubectl -- apply -f backend-service.yaml
+  381  minikube kubectl --  rollout restart deployment/backend-deployment-devops -n haproxy-controller-devops
+  382  minikube kubectl -- logs -n haproxy-controller-devops -l run=haproxy-ingress
+  383  minikube kubectl -- get svc -n haproxy-controller-devops
+  384  minikube kubectl -- rollout restart deployment/haproxy-ingress-devops -n haproxy-controller-devops
+  385  minikube kubectl -- port-forward -n haproxy-controller-devops service/ingress-service-devops 8080:80
+  386  git branch
+  387  git add lab5
+  388  git commit -m "adding final k8s lab files"
+  389  git add lab5
+  390  git commit -m "adding final k8s lab files"
+  391  git push main origin
+  392  git push origin main
+  393  minikube kubectl -- apply -f Backend-deployment.yaml
+  394  cd lab5
+  395  minikube kubectl -- apply -f Backend-deployment.yaml
+  396  kubectl port-forward -n haproxy-controller-devops service/ingress-service-devops 8080:80
+  397  minikube kubectl -- port-forward -n haproxy-controller-devops service/ingress-service-devops 8080:80
+  398  git add lab5
+  399  cd ..
+  400  git add lab5
+  401  git commit -m "adding final k8s lab files"
+  402  git push origin main
+  403  cd lab5
+  404  git add README.md
+  405  git add README
+  406  cd ..
+  407  git add README
+  408  git add README.md
+  409  git commit -m "updating readme file"
+  410  git push origin main
+  411  cd "C:\Users\youss\OneDrive - Nile University\Desktop\rysha\frontend"
+  412  cd ..
+  413  ls
+  414  cd "C:\Users\youss\OneDrive - Nile University\Desktop\rysha\frontend"
+  415  cd ..
+  416  ls
+  417  cd "C:\Users\youss\OneDrive - Nile University\Desktop\rysha\frontend"
+  418  cd ..
+  419  ls
+  420  source rysha-venv/bin/activate
+  421  ls
+  422  source rysha-venv/bin/activate
+  423  pip install flask pandas plotly sqlalchemy streamlit
+  424  pip install flask pandas plotly sqlalchemy streamlit
+  425  sudo apt pip install flask pandas plotly sqlalchemy streamlit
+  426  apt pip install flask pandas plotly sqlalchemy s
+  427  sudo apt update
+  428  sudo apt install python3 python3-pip
+  429  pip3 install flask pandas plotly sqlalchemy streamlit
+  430  python3 --version
+  431  pip3 --version
+  432  pip3 install flask pandas plotly sqlalchemy streamlit
+  433  python3 -m venv rysha-venv
+  434  python3-venv -m venv rysha-venv
+  435  python3 -m venv rysha-venv
+  436  apt install python3.12-venv
+  437  sudo apt install python3.12-venv
+  438  python3 -m venv rysha-venv
+  439  python3 app.py
+  440  cd tracking-system
+  441  python3 app.py
+  442  cd ..
+  443  cd rysha-venv
+  444  python3 app.py
+  445  ls
+  446  cd tracking-system
+  447  python3 app.py
+  448  pip install flask pandas plotly sqlalchemy streamlit
+  449  pip3 install flask pandas plotly sqlalchemy streamlit
+  450  sudo apt install flask pandas plotly sqlalchemy streamlit
+  451  deactivate
+  452  cd ..
+  453  cd -
+  454  cd -exit
+  455  cd ..
+  456  ls
+  457  deactivate
+  458  rm -rf rysha-venv/
+  459  ls
+  460  pip install --user flask pandas plotly sqlalchemy streamlit
+  461  python app.py
+  462  python3 app.py
+  463  cd tracking-system
+  464  python3 app.py
+  465  curl -X POST http://localhost:5000/import   -H "Content-Type: application/json"   -d '[
+  466      {
+  467        "name": "Horus Statue",
+  468        "sku": "ART-004",
+  469        "cost": 70,
+  470        "price": 200,
+  471        "stock": 10,
+  472        "dimensions": "25x75 cm"
+  473      },
+  474      {
+  475        "name": "Scarab Amulet",
+  476        "sku": "ART-005",
+  477        "cost": 15,
+  478        "price": 60,
+  479        "stock": 100,
+  480        "dimensions": "10x10 cm"
+  481      }
+  482    ]'
+  483  curl -X POST http://localhost:5000/import   -H "Content-Type: application/json"   -d '[
+  484      {
+  485        "name": "Horus Statue",
+  486        "sku": "ART-004",
+  487        "cost": 70,
+  488        "price": 200,
+  489        "stock": 10,
+  490        "dimensions": "25x75 cm"
+  491      },
+  492      {
+  493        "name": "Scarab Amulet",
+  494        "sku": "ART-005",
+  495        "cost": 15,
+  496        "price": 60,
+  497        "stock": 100,
+  498        "dimensions": "10x10 cm"
+  499      }
+  500    ]'
+  501  /bin/python3 /home/youss/.vscode-server/extensions/ms-python.python-2025.2.0-linux-x64/python_files/printEnvVariablesToFile.py /home/youss/.vscode-server/extensions/ms-python.python-2025.2.0-linux-x64/python_files/deactivate/bash/envVars.txt
+  502  cd ..
+  503  ls
+  504  cd usr
+  505  ls
+  506  cd ..
+  507  cd "/mnt/c/Users/youss/OneDrive - Nile University/Desktop/DEPI Tech/k8s/k8s_depi_program"
+  508  cd ..
+  509  ls
+  510  cd Ansible
+  511  ls
+  512  cd test
+  513  code .
+  514  git branch
+  515  git remote
+  516  git remote -v
+  517  ansible --version
+  518  where ansible
+  519  ansible-playbook -i inventory.ini deploy-node.yml
+  520  ansible-playbook -i inventory.ini deploy-node.yml -u ubuntu --private-key ~/.ssh/your-key.pem
+  521  ssh -i ~/.ssh/your-key.pem ubuntu@52.207.35.219
+  522  youss@DESKTOP-U657373:~/deploy-node-app-using-ansible$ ansible-playbook -i inventory.ini deploy-node.yml
+  523  PLAY [Install requermients to deploy node app] ***********************************************************************************************************************************
+  524  TASK [Gathering Facts] ***********************************************************************************************************************************************************
+  525  fatal: [52.207.35.219]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '52.207.35.219' (ED25519) to the list of known hosts.\r\nno such identity: /home/youss/.ssh/id_rsa: No such file or directory\r\nubuntu@52.207.35.219: Permission denied (publickey).", "unreachable": true}
+  526  PLAY RECAP ***********************************************************************************************************************************************************************
+  527  52.207.35.219              : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+  528  youss@DESKTOP-U657373:~/deploy-node-app-using-ansible$ ansible-playbook -i inventory.ini deploy-node.yml -u ubuntu --private-key ~/.ssh/your-key.pem
+  529  PLAY [Install requermients to deploy node app] ***********************************************************************************************************************************
+  530  TASK [Gathering Facts] ***********************************************************************************************************************************************************
+  531  fatal: [52.207.35.219]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: no such identity: /home/youss/.ssh/id_rsa: No such file or directory\r\nubuntu@52.207.35.219: Permission denied (publickey).", "unreachable": true}
+  532  PLAY RECAP ***********************************************************************************************************************************************************************
+  533  52.207.35.219              : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+  534  youss@DESKTOP-U657373:~/deploy-node-app-using-ansible$ ssh -i ~/.ssh/your-key.pem ubuntu@52.207.35.219
+  535  Warning: Identity file /home/youss/.ssh/your-key.pem not accessible: No such file or directory.
+  536  ubuntu@52.207.35.219: Permission denied (publickey).
+  537  youss@DESKTOP-U657373:~/deploy-node-app-using-ansible$ youss@DESKTOP-U657373:~/deploy-node-app-using-ansible$ ansible-playbook -i inventory.ini deploy-node.yml
+  538  PLAY [Install requermients to deploy node app] ***********************************************************************************************************************************
+  539  TASK [Gathering Facts] ***********************************************************************************************************************************************************
+  540  fatal: [52.207.35.219]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '52.207.35.219' (ED25519) to the list of known hosts.\r\nno such identity: /home/youss/.ssh/id_rsa: No such file or directory\r\nubuntu@52.207.35.219: Permission denied (publickey).", "unreachable": true}
+  541  PLAY RECAP ***********************************************************************************************************************************************************************
+  542  52.207.35.219              : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+  543  youss@DESKTOP-U657373:~/deploy-node-app-using-ansible$ ansible-playbook -i inventory.ini deploy-node.yml -u ubuntu --private-key ~/.ssh/your-key.pem
+  544  PLAY [Install requermients to deploy node app] ***********************************************************************************************************************************
+  545  TASK [Gathering Facts] ***********************************************************************************************************************************************************
+  546  fatal: [52.207.35.219]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: no such identity: /home/youss/.ssh/id_rsa: No such file or directory\r\nubuntu@52.207.35.219: Permission denied (publickey).", "unreachable": true}
+  547  PLAY RECAP ***********************************************************************************************************************************************************************
+  548  52.207.35.219              : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+  549  youss@DESKTOP-U657373:~/deploy-node-app-using-ansible$ ssh -i ~/.ssh/your-key.pem ubuntu@52.207.35.219
+  550  Warning: Identity file /home/youss/.ssh/your-key.pem not accessible: No such file or directory.
+  551  ubuntu@52.207.35.219: Permission denied (publickey).
+  552  youss@DESKTOP-U657373:~/deploy-node-app-using-ansible$ 
+  553  ansible-playbook -i inventory.ini deploy-node.yml -vvv
+  554  ansible-playbook -i inventory.ini deploy-node.yml -vvvls
+  555  ls ~/.ssh
+  556  ls
+  557  git clone https://github.com/XD-DENG/flask-example.git
+  558  ls
+  559  pip install -r requirements.txt
+  560  sudo apt install -r requirements.txt
+  561  python3 -m pip install -r requirements.txt
+  562  cd /mnt/c/users/youss/OneDrive\ -\ Nile\ University/Desktop/freelance/flask-example-master/flask-example-master
+  563  python3 -m venv venv
+  564  source venv/bin/activate
+  565  pip install -r requirements.txt
+  566  python app.py
+  567  exit
+  568  deactivate
+  569  python app.py
+  570  python enhanced-app.py
+  571  pip install flask-login
+  572  python enhanced-app.py
+  573  git branch
+  574  python enhanced-app.py
+  575  python enhanced-app.py
+  576  python database.py
+  577  git init
+  578  git branch -M main
+  579  git branch
+  580  git branch -m
+  581  python app.py
+  582  deactivate
+  583  docker images
+  584  docker build -t .
+  585  docker build -t flask-v1 .
+  586  docker images
+  587  docker build -t flask-v2 .
+  588  docker images
+  589  docker run -d -p 5000:5000 --name my-flask-app flask-v1
+  590  docker ps
+  591  docker ps -a
+  592  docker rm c3
+  593  docker stop c3
+  594  docker stop c3f
+  595  docker rm c3f
+  596  docker run -d -p 5000:5000 --name my-flask-app flask-v1
+  597  docker run -d -p 5000:5000 --name my-flask-app flask-v2
+  598  docker ps -a
+  599  docker rm 41
+  600  docker ps -a
+  601  sudo lsof -i :5000
+  602  sudo kill -9 53302 57547
+  603  sudo lsof -i :5000
+  604  docker run -d -p 5000:5000 --name my-flask-app flask-v1
+  605  docker run -d -p 5000:5000 --name my-flask-app2 flask-v2
+  606  sudo lsof -i :5000
+  607  sudo kill -9 61487 61494
+  608  sudo lsof -i :5000
+  609  docker run -d -p 5000:5000 --name my-flask-app2 flask-v2
+  610  docker ps -a
+  611  docker rm a4
+  612  docker rm -f a4
+  613  docker rm -f f0
+  614  docker run -d -p 5000:5000 --name my-flask-app2 flask-v2
+  615  python app.py
+  616  python app.py --port 5001
+  617  docker ps
+  618  docker rm -f 4c
+  619  python app.py
+  620  git branch
+  621  git add .
+  622  git commit -m "adding all project"
+  623  git push main origin
+  624  git push origin main
+  625  git branch -b test
+  626  git branch -b "test"
+  627  git branch "test"
+  628  git branch
+  629  gir cheackout test
+  630  git cheackout test
+  631  git checkout test
+  632  git checkout main
+  633  python app.py
+  634  git branch
+  635  giit init
+  636  git init
+  637  git branch
+  638  git add README.md
+  639  git commit -m "first commit"
+  640  git branch -M main
+  641  git remote add origin https://github.com/Youssef22Ashraf/freelance.git
+  642  git push -u origin main
+  643  git add .
+  644  docker ps
+  645  docker images
+  646  kubectl get pods
+  647  python3 app.py
+  648  apt install flask
+  649  sudo apt install flask
+  650  git branch
+  651  pytest tests/test_auth.py -v
+  652  pytest --cov=app tests/test_auth.py
+  653  python -m pytest tests/test_auth.py -v
+  654  tree -L 2
+  655  sudo apt  install tree
+  656  tree -L 2
+  657  pip install -r requirements.txt
+  658  pytest --cov=.
+  659  pytest --cov=.ls
+  660  pytest --cov=. tests/
+  661  pytest --cov=. 
+  662  grep "Flask(__name__)" app.py
+  663  (venv) youss@DESKTOP-U657373:/mnt/c/users/youss/OneDrive - Nile University/Desktop/freelance/flask-example-master/flask-example-master$ grep "Flask(__name__)" app.py
+  664  pytest tests/test_auth.py -v
+  665  pytest --cov=. tests/
+  666  pytest tests/mini_test.py -v
+  667  pytest --cov=. tests/
+  668  pytest tests/mini_test.py -v
+  669  pytest --cov=. tests/
+  670  git add /test
+  671  git add /tests
+  672  ls
+  673  cd tests
+  674  ls
+  675  git add .
+  676  git reset HEAD
+  677  cd ..
+  678  git add ./tests
+  679  git commit -m "tests scripts"
+  680  git branch
+  681  git push origin test
+  682  git branch
+  683  git push origin main
+  684  git remote add gitlab git remote add gitlab
+  685  git remote add gitlab git@gitlab.com:freelance8742416/freelance.git
+  686  git push gitlab main
+  687  pytest --cov=. tests/
+  688  git push gitlab main
+  689  pytest --cov=. tests/
+  690  python app.py
+  691  python app.py
+  692  "/mnt/c/users/youss/OneDrive - Nile University/Desktop/freelance/flask-example-master/flask-example-master/venv/bin/python"
+  693  python app.py
+  694  python show_users.py
+  695  python app.py
+  696  python show_users.py
+  697  pytest --cov=. tests/
+  698  docker images
+  699  docker ps
+  700  docker system prune -a
+  701  docker build -t flask-app-test .
+  702  docker images
+  703  docker rm -f 2e
+  704  docker rmi -f 2e
+  705  docker images
+  706  docker rmi -f 0b
+  707  DOCKER_BUILDKIT=1 docker build -t flask-app:test .
+  708  docker build -t flask-app:test .
+  709  docker images
+  710  docker rmi -f 31
+  711  docker rmi -f af
+  712  DOCKER_BUILDKIT=1 docker build -t flask-app:test .
+  713  docker build -t flask-app:staging .
+  714  docker-compose up -d
+  715  sudo apt update
+  716  sudo apt install docker-compose-plugin
+  717  docker compose version
+  718  docker-compose up -d
+  719  docker ps
+  720  docker-compose logs web
+  721  docker-compose down
+  722  docker-compose up --build -d
+  723  docker ps
+  724  docker-compose logs web
+  725  docker-compose down
+  726  docker-compose up --build -d
+  727  docker-compose logs web
+  728  docker ps
+  729  docker-compose logs web
+  730  docker ps
+  731  docker-compose logs web
+  732  docker-compose down
+  733  docker ps
+  734  docker-compose up -d
+  735  docker ps
+  736  docker-compose down
+  737  docker-compose up --build -d
+  738  export POSTGRES_PASSWORD=prod_password_123 && export SECRET_KEY=prod_secret_key_456
+  739  docker-compose -f docker-compose.prod.yml up --build -d
+  740  docker-compose -f docker-compose.prod.yml down
+  741  docker-compose -f docker-compose.prod.yml up --build -d
+  742  git status
+  743  git add .
+  744  git commit -m "Add Docker configuration and application files for staging and production environments"
+  745  git push origin main
+  746  docker ps
+  747  mkdir -p ~/gitlab/logs
+  748  ls
+  749  mkdir -p gitlab/logs
+  750  ls
+  751  mkdir gitlab/logs; mkdir gitlab/config; mkdir gitlab/data
+  752  ls
+  753  cd gitlab
+  754  ls
+  755  cd ..
+  756  docker run --detach   --hostname localhost   --publish 80:80   --name gitlab   --restart always   --volume ~/gitlab/config:/etc/gitlab   --volume ~/gitlab/logs:/var/log/gitlab   --volume ~/gitlab/data:/var/opt/gitlab   gitlab/gitlab-ee:latest
+  757  docker logs -f gitlab
+  758  pytest --cov=. tests/
+  759  docker build -t flask-app:test .
+  760  docker-compose up -d
+  761  docker ps
+  762  docker exec -it flask-example-master-web-1 bash
+  763  git status
+  764  git push origin main
+  765  git add docker-compose-stagin.yml
+  766  git add docker-compose-staging.yml
+  767  git commit -m "rename staging"
+  768  git push origin main
+  769  git fetch
+  770  git push origin main
+  771  git pull
+  772  git push origin main
+  773  git pull --no-rebase
+  774  git push origin main
+  775  /bin/python3 /home/youss/.vscode-server/extensions/ms-python.python-2025.4.0-linux-x64/python_files/printEnvVariablesToFile.py /home/youss/.vscode-server/extensions/ms-python.python-2025.4.0-linux-x64/python_files/deactivate/bash/envVars.txt
+  776  code .
+  777  docker ps
+  778  ls
+  779  docker ps
+  780  docker stop gitlab
+  781  docker run --detach   --hostname localhost   --publish 80:80   --name gitlab   --restart always   --memory 6g   --shm-size 256m   --env GITLAB_OMNIBUS_CONFIG="
+  782      prometheus_monitoring['enable'] = false;
+  783      grafana['enable'] = false;
+  784      alertmanager['enable'] = false;
+  785      gitlab_rails['gitlab_shell_ssh_port'] = 22;
+  786      "   gitlab/gitlab-ee:latest
+  787  docker ps
+  788  docker run --detach --hostname localhost --publish 443:443 --publish 80:80 --publish 22:22 --name gitlab --restart always --volume gitlab_config:/etc/gitlab --volume gitlab_logs:/var/log/gitlab --volume gitlab_data:/var/opt/gitlab --shm-size 256m gitlab/gitlab-ee:latest
+  789  docker logs gitlab 2>&1 | grep "Password:" | tail -n 1
+  790  docker ps
+  791  docker logs -f gitlab | cat
+  792  ssh -o PreferredAuthentications=publickey -o PasswordAuthentication=no git@localhost
+  793  ssh-keygen -lf ~/.ssh/id_ed25519.pub
+  794  docker exec -it gitlab gitlab-rake gitlab:shell:setup
+  795  docker exec -it gitlab gitlab-ctl restart
+  796  git remote set-url origin http://localhost/root/freelance.git
+  797  git ls-remote origin
+  798  git config --global credential.helper store
+  799  docker ps
+  800  start minikube
+  801  minikube start
+  802  minikube kubectl -- get pods
+  803  minikube kubectl -- create namespace staging
+  804  minikube kubectl -- create namespace production
+  805  mkdir -p kubernetes/{staging,production}/{postgres,app}
+  806  touch kubernetes/staging/postgres/statefulset.yaml
+  807  touch kubernetes/staging/postgres/service.yaml
+  808  touch kubernetes/staging/postgres
+  809  cd  kubernetes/staging/postgres
+  810  ls
+  811  nano service.yaml
+  812  git remote add gitlab http://gitlab.local/root/freelance.git
+  813  git remote -v
+  814  git remote remove gitlab
+  815  git remote add gitlab http://gitlab.local/root/freelance.git
+  816  git remote -v
+  817  git push -u gitlab main
+  818  docker inspect gitlab | grep IPAddress
+  819  git remote set-url gitlab http://172.17.0.2/root/freelance.git
+  820  git push -u gitlab main
+  821  docker ps -a | grep gitlab
+  822  docker port gitlab
+  823  git remote set-url gitlab http://localhost/root/freelance.git
+  824  git config --global http.sslVerify false
+  825  git push -u gitlab main
+  826  docker exec -it gitlab grep -A5 "AuthorizedKeysFile" /etc/ssh/sshd_config
+  827  docker exec -it gitlab nano /etc/gitlab/gitlab.rb
+  828  ssh-add -l
+  829  docker exec -it gitlab cat /var/opt/gitlab/.ssh/authorized_keys
+  830  youss@DESKTOP-U657373:/mnt/c/users/youss/OneDrive - Nile University/Desktop/freelance/flask-example-master/flask-example-master$ docker exec -it gitlab cat /var/opt/gitlab/.ssh/authorized_keys
+  831  command="/opt/gitlab/embedded/service/gitlab-shell/bin/gitlab-shell key-1",no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBGkVgzZXskmASMkXqPmdjuMwWxk2mpYjK4mE6HH5B0o
+  832  youss@DESKTOP-U657373:/mnt/c/users/youss/OneDrive - Nile University/Desktop/freelance/flask-example-master/flask-example-master$ docker exec -it gitlab gitlab-rake gitlab:shell:setup
+  833  This task will now rebuild the authorized_keys file.
+  834  You will lose any data stored in the authorized_keys file.
+  835  Do you want to continue (yes/no)? yes
+  836  youss@DESKTOP-U657373:/mnt/c/users/youss/OneDrive - Nile University/Desktop/freelance/flask-example-master/flask-example-master$ docker exec -it gitlab gitlab-ctl restart
+  837  ok: run: alertmanager: (pid 5273) 1s
+  838  ok: run: gitaly: (pid 5284) 0s
+  839  ok: run: gitlab-exporter: (pid 5302) 0s
+  840  ok: run: gitlab-kas: (pid 5320) 0s
+  841  ok: run: gitlab-workhorse: (pid 5327) 1s
+  842  ok: run: logrotate: (pid 5339) 0s
+  843  ok: run: nginx: (pid 5349) 0s
+  844  ok: run: postgres-exporter: (pid 5357) 0s
+  845  ok: run: postgresql: (pid 5366) 0s
+  846  ok: run: prometheus: (pid 5368) 0s
+  847  timeout: run: puma: (pid 490) 12655s
+  848  ok: run: redis: (pid 5402) 0s
+  849  ok: run: redis-exporter: (pid 5409) 1s
+  850  ok: run: sidekiq: (pid 5433) 0s
+  851  ok: run: sshd: (pid 5439) 1
+  852  docker exec -it gitlab gitlab-rake gitlab:shell:setup
+  853  docker exec -it gitlab gitlab-ctl restart
+  854  ssh -T git@localhost
+  855  docker logs gitlab
+  856  touch kubernetes/staging/app/deployment.yaml
+  857  touch kubernetes/staging/app/service.yaml
+  858  touch kubernetes/shared/uploads-pvc.yaml
+  859  mkdir -p kubernetes/shared
+  860  touch kubernetes/shared/uploads-pvc.yaml
+  861  ls kubernetes
+  862  ls kubernetes/shared
+  863  nano kubernetes/shared/uploads-pvc.yaml
+  864  touch kubernetes/production/postgres/statefulset.yaml
+  865  touch kubernetes/production/postgres/service.yaml
+  866  touch kubernetes/production/app/deployment.yaml
+  867  touch kubernetes/production/app/service.yaml
+  868  touch kubernetes/production/app/ingress.yaml
+  869  touch kubernetes/shared/uploads-pvc-production.yaml
+  870  kubectl create secret docker-registry gitlab-registry   --docker-server=registry.gitlab.local   --docker-username=root   --namespace=staging
+  871  kubectl create secret docker-registry gitlab-registry   --docker-server=registry.gitlab.local   --docker-username=root   --docker-password='G\!tL\@b_7e10\$ecurePwd'   --namespace=staging
+  872  kubectl create secret docker-registry gitlab-registry   --docker-server=registry.gitlab.local   --docker-username=root   --docker-password='G\!tL\@b_7e10\$ecurePwd'   --namespace=kubectl create secret docker-registry gitlab-registry   --docker-server=registry.gitlab.local   --docker-username=root   --docker-password='G\!tL\@b_7e10\$ecurePwd'   --namespace=production
+  873  kubectl create secret docker-registry gitlab-registry   --docker-server=registry.gitlab.local   --docker-username=root   --docker-password='G\!tL\@b_7e10\$ecurePwd'   --namespace=production
+  874  kubectl get secrets
+  875  kubectl get secrets --namespace=production
+  876  kubectl get secrets --namespace=staging
+  877  kubectl create secret generic db-creds   --from-literal=url="postgresql://postgres:staging_password@postgres.staging:5432/flask_app_staging"   --from-literal=password="staging_password"   -n staging
+  878  kubectl create secret generic db-creds   --from-literal=url="postgresql://postgres:prod_password@postgres.production:5432/flask_app_prod"   --from-literal=password="prod_password"   -n production
+  879  kubectl apply -f kubernetes/shared/kubectl apply -f kubernetes/shared/
+  880  kubectl apply -f kubernetes/shared/
+  881  kubectl apply -f kubernetes/staging/
+  882  ls -a kubernetes/staging/
+  883  ls -a kubernetes/staging/app
+  884  ls -a kubernetes/staging/postgres
+  885  kubectl apply -f kubernetes/staging/postgres/
+  886  kubectl apply -f kubernetes/staging/app/
+  887  kubectl apply -f kubernetes/production/postgres/
+  888  kubectl apply -f kubernetes/production/app/
+  889  kubectl get pvc -n staging
+  890  kubectl get pvc -n production
+  891  kubectl get pods -n staging
+  892  kubectl get pods -n production
+  893  kubectl get deployments -n staging
+  894  kubectl get deployments -n production
+  895  kubectl get svc -n staging
+  896  kubectl get svc -n production
+  897  kubectl describe pod postgres-0 -n staging
+  898  kubectl create secret generic postgres-creds   --from-literal=password=staging_password   -n staging
+  899  kubectl create secret generic postgres-creds   --from-literal=password=prod_password   -n production
+  900  kubectl get secrets -n staging
+  901  kubectl get secrets -n production
+  902  kubectl delete pod postgres-0 -n staging
+  903  kubectl delete pod postgres-0 -n production
+  904  kubectl get pods -n staging
+  905  kubectl get pods -n production
+  906  kubectl describe pod freelance-app-65d84ff9df-62rbw -n staging
+  907  ping registry.gitlab.local
+  908  curl -v http://registry.gitlab.local
+  909  docker inspect gitlab | grep IPAddress
+  910  ip addr show | grep "inet "
+  911  echo "172.17.0.2 registry.gitlab.local" | sudo tee -a /etc/hosts
+  912  ping 172.17.0.2 registry.gitlab.local
+  913  minikube kubectl -- get ns
+  914  docker ps | grep gitlab
+  915  docker exec gitlab curl -I http://localhost
+  916  docker exec -it gitlab editor /etc/gitlab/gitlab.rb
+  917  docker exec gitlab gitlab-ctl status | grep registry
+  918  docker exec gitlab ls /opt/gitlab/embedded/service/registry/
+  919  docker ps
+  920  docker exec -it gitlab bash
+  921  ls
+  922  docker ps
+  923  docker images
+  924  git branch
+  925  git pull
+  926  git remote -v
+  927  python app.py
+  928  python3 app.py
+  929  docker ps
+  930  git remote add github https://github.com/Youssef22Ashraf/freelance.git
+  931  git remote -v
+  932  git fetch github
+  933  git merge github/main
+  934  git pull https://github.com/Youssef22Ashraf/freelance.git main
+  935  history > his.txt

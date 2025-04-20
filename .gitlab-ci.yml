@@ -1,56 +1,77 @@
-image: docker:20.10.16
-
-services:
-  - docker:20.10.16-dind
-
-variables:
-  DOCKER_TLS_CERTDIR: "/certs"
-  CONTAINER_STAGING_IMAGE: $CI_REGISTRY_IMAGE:staging
-  CONTAINER_PRODUCTION_IMAGE: $CI_REGISTRY_IMAGE:production
-
 stages:
   - test
   - build
-  - deploy_staging
-  - deploy_production
+  - deploy-staging
+  - deploy-prod
 
+variables:
+  # Container registry
+  CI_REGISTRY: "registry.gitlab.local"
+  CI_REGISTRY_IMAGE: "$CI_REGISTRY/root/freelance"
+  
+  # Kubernetes
+  K8S_STAGING_NAMESPACE: "staging"
+  K8S_PROD_NAMESPACE: "production"
+  
+  # Database URLs (defined in GitLab CI/CD variables)
+  DATABASE_URL: "sqlite:///app.db"  # Dev default
+  STAGING_DB_URL: "$STAGING_DB_URL"  # Defined in CI vars
+  PROD_DB_URL: "$PROD_DB_URL"        # Defined in CI vars
+
+# Test with coverage
 test:
   stage: test
-  image: python:3.9-slim
+  image: python:3.9
   script:
-    - pip install -r requirements.txt
-    - python -m pytest
+    - pip install -r requirements.txt pytest coverage gunicorn
+    - pytest --cov=./ --cov-report=xml
+    - coverage report
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
 
+# Build using Kaniko (no Docker-in-Docker needed)
 build:
   stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:v1.9.0
+    entrypoint: [""]
   script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build -t $CONTAINER_STAGING_IMAGE .
-    - docker push $CONTAINER_STAGING_IMAGE
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor
+      --context $CI_PROJECT_DIR
+      --dockerfile $CI_PROJECT_DIR/Dockerfile
+      --destination "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+      --destination "$CI_REGISTRY_IMAGE:latest"
 
-deploy_staging:
-  stage: deploy_staging
+# Deploy to staging namespace
+deploy-staging:
+  stage: deploy-staging
+  image: bitnami/kubectl:latest
   environment:
     name: staging
+    url: http://staging.freelance.local
   script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker pull $CONTAINER_STAGING_IMAGE
-    - docker-compose -f docker-compose.yml down
-    - docker-compose -f docker-compose.yml up -d
+    - kubectl config use-context local-k8s
+    - kubectl apply -f kubernetes/staging/ -n $K8S_STAGING_NAMESPACE
+    - kubectl rollout status deployment/freelance -n $K8S_STAGING_NAMESPACE
   only:
     - main
 
-deploy_production:
-  stage: deploy_production
+# Manual production deployment  
+deploy-prod:
+  stage: deploy-prod
+  image: bitnami/kubectl:latest
   environment:
     name: production
-  script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker pull $CONTAINER_STAGING_IMAGE
-    - docker tag $CONTAINER_STAGING_IMAGE $CONTAINER_PRODUCTION_IMAGE
-    - docker push $CONTAINER_PRODUCTION_IMAGE
-    - docker-compose -f docker-compose.prod.yml down
-    - docker-compose -f docker-compose.prod.yml up -d
+    url: http://freelance.local
   when: manual
+  script:
+    - kubectl config use-context local-k8s
+    - kubectl apply -f kubernetes/production/ -n $K8S_PROD_NAMESPACE
+    - kubectl rollout status deployment/freelance -n $K8S_PROD_NAMESPACE
   only:
-    - main
+    - tags
