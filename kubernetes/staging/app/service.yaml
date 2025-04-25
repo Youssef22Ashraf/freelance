@@ -4,9 +4,11 @@ metadata:
   name: freelance-service
   namespace: staging
 spec:
+  type: NodePort  # Ensure the service type is NodePort
   selector:
     app: freelance
   ports:
     - protocol: TCP
       port: 80
       targetPort: 5000
+      nodePort: 30001  # Updated NodePort to 30001

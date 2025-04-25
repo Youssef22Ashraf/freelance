@@ -15,16 +15,13 @@ spec:
     spec:
       containers:
       - name: app
-        image: registry.gitlab.local/root/freelance:staging
+        image: youssefashraf265/flask-example-master_web:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
         env:
-        - name: DATABASE_URL
-          valueFrom:
-            secretKeyRef:
-              name: db-creds
-              key: url
+        - name: DATABASE_URL        
+          value: "postgresql://flaskuser:yourpassword@postgres/flask_app_staging"
         - name: FLASK_ENV
           value: "staging"
         volumeMounts:
@@ -34,5 +31,5 @@ spec:
       - name: uploads
         persistentVolumeClaim:
           claimName: uploads-pvc
-      imagePullSecrets:
-      - name: gitlab-registry
+      # imagePullSecrets:
+      # - name: gitlab-registry  # Commented out GitLab-specific part

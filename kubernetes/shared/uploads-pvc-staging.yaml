@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: uploads-pvc
-  namespace: staging  # Create separate ones for production
+  namespace: staging
 spec:
   accessModes:
     - ReadWriteOnce
