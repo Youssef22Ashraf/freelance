@@ -36,11 +36,15 @@ COPY config.py .
 COPY templates/ templates/
 COPY static/ static/
 
-# Create uploads directory
-RUN mkdir -p uploads
+# Create necessary directories
+RUN mkdir -p uploads database_file
+COPY database_file/ database_file/
 
-# Create non-root user
-RUN useradd -m appuser && chown -R appuser:appuser /app
+# Create non-root user and set permissions
+RUN useradd -m appuser && \
+    chown -R appuser:appuser /app && \
+    chmod 755 /app/database_file
+
 USER appuser
 
 # Set environment variables
