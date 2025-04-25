@@ -4,9 +4,11 @@ metadata:
   name: freelance-service
   namespace: production
 spec:
+  type: NodePort  # Ensure the service type is NodePort
   selector:
     app: freelance
   ports:
     - protocol: TCP
       port: 80
       targetPort: 5000
+      nodePort: 30002  # Use a different NodePort for production

@@ -8,5 +8,5 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi  # Larger storage for production
-  storageClassName: "standard"  # Explicit storage class
+      storage: 5Gi  # Larger storage for production  
+      #storageClassName: "standard"  # Explicit storage class

@@ -26,7 +26,7 @@ spec:
               name: postgres-creds
               key: password
         - name: POSTGRES_DB
-          value: "flask_app_prod"
+          value: "flask_app_production"
         ports:
         - containerPort: 5432
         volumeMounts:
@@ -39,4 +39,4 @@ spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
-          storage: 1Gi
+          storage: 5Gi  # Larger storage for production

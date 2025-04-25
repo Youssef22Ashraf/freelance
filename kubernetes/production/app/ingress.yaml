@@ -1,13 +1,11 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: freelance-ingress
+  name: flask-ingress
   namespace: production
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: freelance.yourdomain.com
+  - host: flask.production.local
     http:
       paths:
       - path: /
